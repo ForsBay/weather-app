@@ -1,6 +1,7 @@
 import './style.css'
 import { searchCities, getWeather } from './api'
 import { getWeatherInfo } from './weatherCodes'
+import { icon } from './icons'
 import type { City, Weather } from './types'
 
 const form = document.querySelector<HTMLFormElement>('#search-form')!
@@ -88,7 +89,7 @@ function showLoading() {
 function showError(message: string) {
   weatherEl.innerHTML = `
     <div class="error-card">
-      <p>⚠️</p>
+      ${icon('alert', 40)}
       <p>${escapeHtml(message)}</p>
     </div>
   `
@@ -109,7 +110,7 @@ function renderWeather(placeName: string, weather: Weather) {
       return `
         <li class="day">
           <span class="day-name">${formatDay(date, i)}</span>
-          <span class="day-icon" title="${dayInfo.label}">${dayInfo.icon}</span>
+          <span class="day-icon" title="${dayInfo.label}">${icon(dayInfo.icon, 26)}</span>
           <span class="day-temp">
             <b>${Math.round(daily.temperature_2m_max[i])}°</b>
             <span>${Math.round(daily.temperature_2m_min[i])}°</span>
@@ -123,7 +124,7 @@ function renderWeather(placeName: string, weather: Weather) {
     <div class="current ${current.is_day ? 'day-bg' : 'night-bg'}">
       <h2>${escapeHtml(placeName)}</h2>
       <div class="current-main">
-        <span class="current-icon">${info.icon}</span>
+        <span class="current-icon">${icon(info.icon, 72)}</span>
         <span class="current-temp">${Math.round(current.temperature_2m)}°</span>
       </div>
       <p class="current-label">${info.label}</p>
