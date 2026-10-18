@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="top">
+        <h1>☁️ Weather</h1>
+      </header>
+
+      <form id="search-form" class="search" novalidate autocomplete="off">
+        <div class="search-box">
+          <input
+            id="city"
+            type="text"
+            placeholder="Search city..."
+            aria-label="City name"
+            aria-describedby="search-error"
+          />
+          <ul id="suggestions" class="suggestions" hidden></ul>
+        </div>
+        <button type="submit" class="btn">Search</button>
+        <button type="button" id="location-btn" class="btn icon" title="Use my location" aria-label="Use my location">
+          📍
+        </button>
+      </form>
+      <p id="search-error" class="search-error" role="alert"></p>
+
+      <section id="weather" aria-live="polite">
+        <div class="placeholder">
+          <p>🌍</p>
+          <p>Search for a city or use your location to see the weather</p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
